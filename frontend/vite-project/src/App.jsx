@@ -12,6 +12,7 @@ import Logout from './pages/Logout';
 import Login from './Login';
 import Sidebar from './components/Sidebar';
 import Topbar from './components/Topbar';
+import Footer from './components/Footer';
 import ResetPassword from './pages/ResetPassword';
 
 function LoginWrapper({ onLogin }) {
@@ -51,14 +52,17 @@ function DashboardLayout({ user, setUser }) {
     setUser(null);
   };
   return (
-    <div className="flex min-h-screen bg-gray-100">
-      <Sidebar />
-      <div className="flex-1 flex flex-col">
-        <Topbar user={user} onLogout={handleLogout} />
-        <main className="flex-1">
-          <Outlet />
-        </main>
+    <div className="flex flex-col min-h-screen bg-gray-100">
+      <div className="flex flex-1">
+        <Sidebar />
+        <div className="flex-1 flex flex-col">
+          <Topbar user={user} onLogout={handleLogout} />
+          <main className="flex-1 flex flex-col">
+            <Outlet />
+          </main>
+        </div>
       </div>
+      <Footer />
     </div>
   );
 }

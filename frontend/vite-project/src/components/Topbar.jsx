@@ -22,17 +22,18 @@ export default function Topbar({ user, onLogout }) {
   };
 
   return (
-    <header className="flex items-center justify-between px-8 py-4 bg-white shadow-sm border-b">
+    <header className="flex items-center justify-between px-8 py-3 bg-gray-800 shadow-md border-b border-gray-700">
       <div className="flex items-center gap-4">
-        <span className="text-xl font-bold text-gray-800">{pageName}</span>
+        <span className="text-2xl font-extrabold text-white tracking-wide drop-shadow">{pageName}</span>
       </div>
       <div className="flex items-center gap-6">
-        <button className="relative">
-          <span className="material-icons text-gray-500 text-2xl">notifications</span>
-          <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full px-1">1</span>
-        </button>
-        <span className="font-semibold text-gray-700">{user?.name || 'User'}</span>
-        <button onClick={handleLogoutClick} className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition font-semibold">Logout</button>
+        <span className="flex items-center gap-2 font-semibold text-white bg-gray-700 px-3 py-1 rounded-full shadow">
+          <span className="inline-block w-6 h-6 rounded-full bg-blue-400 flex items-center justify-center text-white font-bold text-base">
+            {user?.name ? user.name[0].toUpperCase() : 'U'}
+          </span>
+          {user?.name || 'User'}
+        </span>
+        <button onClick={handleLogoutClick} className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition font-semibold shadow">Logout</button>
       </div>
 
       {showConfirm && (
